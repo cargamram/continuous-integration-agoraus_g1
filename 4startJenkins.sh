@@ -19,13 +19,15 @@ echo "Starting jenkins container on domain $JENKINS_DOMAIN and jenkins home is $
 # /var/jenkins_home contains all plugins and configuration
 docker run -d --name $JENKINS_CONTAINER_NAME \
 	-e VIRTUAL_HOST=$JENKINS_DOMAIN \
+	-e VIRTUAL_PORT=8080 \
+	-e VIRTUAL_PROT=https \
 	-p 50000:50000 \
 	-v $JENKINS_HOME:/var/jenkins_home \
 	-v /var/run/docker.sock:/var/run/docker.sock \
 	-v $(which docker):/bin/docker \
 	-v /usr/lib/x86_64-linux-gnu/libapparmor.so.1.1.0:/lib/x86_64-linux-gnu/libapparmor.so.1 \
 	-u root \
-	--restart=alway
+	--restart=always \
 	jenkins:2.7.4
 
 #the last 3 volume bindings are important in order to enable jenkins to run docker, see 
