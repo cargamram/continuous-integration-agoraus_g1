@@ -1,4 +1,5 @@
 FROM maven:3-jdk-7
+FROM jenkinsci/slave
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
 		ssh \
