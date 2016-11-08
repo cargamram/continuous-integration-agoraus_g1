@@ -8,9 +8,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 EXPOSE 22
 
 # Change root password to Docker!
-RUN echo "root:Docker!" | chpasswd
+RUN echo "jenkins:jenkins" | chpasswd
  
 # entrypoint by starting sshd
 CMD ["/usr/sbin/sshd", "-D"]
-
-FROM jenkinsci/slave
