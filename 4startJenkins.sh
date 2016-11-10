@@ -18,6 +18,8 @@ echo "Starting jenkins container on domain $JENKINS_DOMAIN and jenkins home is $
 # https://hub.docker.com/r/jenkinsci/jenkins/tags/
 # /var/jenkins_home contains all plugins and configuration
 docker run -d --name $JENKINS_CONTAINER_NAME \
+    -e "LETSENCRYPT_HOST=jenkins.egc.duckdns.org, egc.duckdns.org" \
+    -e "LETSENCRYPT_EMAIL=annonymous@alum.us.es" \
 	-e VIRTUAL_HOST=$JENKINS_DOMAIN \
 	-e VIRTUAL_PORT=8080 \
 	-e VIRTUAL_PROT=https \

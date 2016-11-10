@@ -1,14 +1,13 @@
 #!/bin/bash 
 
 ENV_NAME="AgoraUS-G1-Deliberations"
-URL_VIRTUAL_HOST="deliberations.agoraus1.egc.duckdns.org"
-BRANCH="unstable"
+URL_VIRTUAL_HOST="beta.deliberaciones.agoraus1.egc.duckdns.org"
+BRANCH="beta"
 PROJECT_JENKINS_NAME="test31"
 
 PATH_ROOT="/var/jenkins_home"
 PATH_ROOT_HOST="/home/egcuser/jenkins_home"
 
-SQL_DUMP_PATH="$PATH_ROOT_HOST/workspace/$JOB_NAME/DeliberationsScript.sql"
 MYSQL_PROJECT_ROUTE="localhost"
 MYSQL_ROOT_PASSWORD="$(date +%s | sha256sum | base64 | head -c 32)"
 
@@ -55,11 +54,11 @@ echo "Desplegando contenedores para $ENV_NAME"
 docker run --name $ENV_NAME-mysql \
     -v "$PATH_ROOT_HOST/deploys/$ENV_NAME/$BRANCH/populate.sql":/home/user/populate.sql \
     -e MYSQL_ROOT_PASSWORD="$MYSQL_ROOT_PASSWORD" \
+    --restart=always \
     -d mysql:5.7 \
     --bind-address=0.0.0.0
-#     -v "$PATH_ROOT_HOST/config-continuous/agoraus1/$ENV_NAME/mysql/mysqld.cnf":/etc/mysql/mysql.conf.d/mysqld.cnf  \
 
-    
+
 echo "$ENV_NAME-mysql creado !"
 echo "$ENV_NAME-mysql creado ($MYSQL_ROOT_PASSWORD)!"
 
@@ -75,6 +74,9 @@ docker run -d --name $ENV_NAME-tomcat \
     -v "$PATH_ROOT_HOST/deploys/$ENV_NAME/$BRANCH/webapps/":/usr/local/tomcat/webapps \
     -e "LETSENCRYPT_HOST=$URL_VIRTUAL_HOST" \
     -e "LETSENCRYPT_EMAIL=annonymous@alum.us.es" \
-	-e VIRTUAL_HOST="$URL_VIRTUAL_HOST" \
-	tomcat:7
+    --restart=always \
+    -e VIRTUAL_HOST="$URL_VIRTUAL_HOST" \
+    -e VIRTUAL_PROTO=https \
+    -e VIRTUAL_PORT=8080 \
+    tomcat:7
 
