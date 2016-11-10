@@ -67,7 +67,7 @@ docker exec -it $ENV_NAME-$BRANCH-mysql \
 echo "$ENV_NAME-mysql populado !"
 
 docker run -d --name $ENV_NAME-$BRANCH-tomcat \
-    --link $ENV_NAME-mysql:$MYSQL_PROJECT_ROUTE \
+    --link $ENV_NAME-$BRANCH-mysql:$MYSQL_PROJECT_ROUTE \
     -v "$PATH_ROOT_HOST/deploys/$ENV_NAME/$BRANCH/webapps/":/usr/local/tomcat/webapps \
     -e "LETSENCRYPT_HOST=$URL_VIRTUAL_HOST" \
     -e "LETSENCRYPT_EMAIL=annonymous@alum.us.es" \
