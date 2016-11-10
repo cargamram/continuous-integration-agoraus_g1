@@ -61,14 +61,21 @@ echo "$ENV_NAME-mysql creado !"
 
 sleep 20
 
-docker exec -it $ENV_NAME-$BRANCH-mysql \
-    sh -c "exec mysql -uroot -p"$MYSQL_ROOT_PASSWORD" < /home/user/populate.sql"
+docker exec $ENV_NAME-$BRANCH-mysql \
+    bash -c "exec mysql -uroot -p"$MYSQL_ROOT_PASSWORD" < /home/user/populate.sql"
 
 echo "$ENV_NAME-mysql populado !"
+
+sleep 20
+
+docker restart $ENV_NAME-$BRANCH-mysql
+
+sleep 5
 
 docker run -d --name $ENV_NAME-$BRANCH-tomcat \
     --link $ENV_NAME-$BRANCH-mysql:$MYSQL_PROJECT_ROUTE \
     -v "$PATH_ROOT_HOST/deploys/$ENV_NAME/$BRANCH/webapps/":/usr/local/tomcat/webapps \
+    -v "$PATH_ROOT_HOST/continuous-delivery-playground/Dockers/conf/tomcat7/server.xml":/usr/local/tomcat/conf/server.xml \
     -e "LETSENCRYPT_HOST=$URL_VIRTUAL_HOST" \
     -e "LETSENCRYPT_EMAIL=annonymous@alum.us.es" \
     --restart=always \
