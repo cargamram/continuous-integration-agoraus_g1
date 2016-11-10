@@ -24,7 +24,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 EXPOSE 22
 
 # Change root password to Docker!
-RUN echo "jenkins:jenkins" | chpasswd
+RUN useradd -m -d /home/jenkins -s /bin/sh jenkins &&\
+    echo "jenkins:jenkins" | chpasswd
  
 # entrypoint by starting sshd
 CMD ["/usr/sbin/sshd", "-D"]
