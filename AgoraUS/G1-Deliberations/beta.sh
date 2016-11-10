@@ -8,6 +8,8 @@ PROJECT_JENKINS_NAME="AgoraUS-G1-Deliberations_make"
 PATH_ROOT="/var/jenkins_home"
 PATH_ROOT_HOST="/home/egcuser/jenkins_home"
 
+CONF_TOMCAT_SERVER="$PATH_ROOT_HOST/continuous-delivery-playground/AgoraUS/G1-Deliberations/beta-conf/tomcat7/server.xml"
+
 MYSQL_PROJECT_ROUTE="localhost"
 MYSQL_ROOT_PASSWORD="$(date +%s | sha256sum | base64 | head -c 32)"
 
@@ -75,7 +77,7 @@ sleep 5
 docker run -d --name $ENV_NAME-$BRANCH-tomcat \
     --link $ENV_NAME-$BRANCH-mysql:$MYSQL_PROJECT_ROUTE \
     -v "$PATH_ROOT_HOST/deploys/$ENV_NAME/$BRANCH/webapps/":/usr/local/tomcat/webapps \
-    -v "$PATH_ROOT_HOST/continuous-delivery-playground/Dockers/conf/tomcat7/server.xml":/usr/local/tomcat/conf/server.xml \
+    -v "$CONF_TOMCAT_SERVER":/usr/local/tomcat/conf/server.xml \
     -e "LETSENCRYPT_HOST=$URL_VIRTUAL_HOST" \
     -e "LETSENCRYPT_EMAIL=annonymous@alum.us.es" \
     --restart=always \
