@@ -1,9 +1,9 @@
 #!/bin/bash 
 
 ENV_NAME="AgoraUS-G1-Deliberations"
-URL_VIRTUAL_HOST="beta.deliberaciones.agoraus1.egc.duckdns.org"
-BRANCH="beta"
-PROJECT_JENKINS_NAME="AgoraUS-G1-Deliberations_make"
+URL_VIRTUAL_HOST="deliberaciones.agoraus1.egc.duckdns.org"
+BRANCH="stable"
+
 
 PATH_ROOT="/var/jenkins_home"
 PATH_ROOT_HOST="/home/egcuser/jenkins_home"
@@ -38,12 +38,10 @@ rm -r "$PATH_ROOT/deploys/$ENV_NAME/$BRANCH/"
 mkdir -p "$PATH_ROOT/deploys/$ENV_NAME/$BRANCH/webapps/"
 
 # WAR
-find "$PATH_ROOT/jobs/$PROJECT_JENKINS_NAME/lastSuccessful/" -follow -name *.war -exec cp {} "$PATH_ROOT/deploys/$ENV_NAME/$BRANCH/webapps/" \;
-mv $PATH_ROOT/deploys/$ENV_NAME/$BRANCH/webapps/*.war $PATH_ROOT/deploys/$ENV_NAME/$BRANCH/webapps/ROOT.war
+cp $PATH_ROOT/deploys/$ENV_NAME/beta/webapps/ROOT.war $PATH_ROOT/deploys/$ENV_NAME/$BRANCH/webapps/ROOT.war
 
 # SQL -> "jobs/test31/builds/lastSuccessfulBuild/archive/DeliberationsScript.sql"
-find "$PATH_ROOT/jobs/$PROJECT_JENKINS_NAME/lastSuccessful/archive/" -follow -name *.sql -exec cp {} "$PATH_ROOT/deploys/$ENV_NAME/$BRANCH/" \;
-mv $PATH_ROOT/deploys/$ENV_NAME/$BRANCH/*.sql $PATH_ROOT/deploys/$ENV_NAME/$BRANCH/populate.sql
+cp $PATH_ROOT/deploys/$ENV_NAME/beta/populate.sql $PATH_ROOT/deploys/$ENV_NAME/$BRANCH/populate.sql
 
 
 echo "Desplegando contenedores para $ENV_NAME"

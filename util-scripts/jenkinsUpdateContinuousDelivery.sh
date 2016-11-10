@@ -6,7 +6,7 @@ mkdir $JENKINS_HOME/continuous-delivery-playground/
 
 echo "Moviendo archivos..."
 mv $WORKSPACE/* $JENKINS_HOME/continuous-delivery-playground/
-mv $WORKSPACE/util-scripts/jenkinsUpdateContinuousDelivery.sh $JENKINS_HOME/
+cp $JENKINS_HOME/continuous-delivery-playground/util-scripts/jenkinsUpdateContinuousDelivery.sh $JENKINS_HOME/
 
 echo "Estos son los archivos en $JENKINS_HOME/continuous-delivery-playground/"
 
