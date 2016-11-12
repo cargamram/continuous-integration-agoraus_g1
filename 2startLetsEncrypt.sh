@@ -2,6 +2,7 @@
 CERTS_PATH=~/LetsEncryptCerts
 
 docker run -d \
+  --name lets-encrypt \
   -v $CERTS_PATH:/etc/nginx/certs:rw \
   --volumes-from reverse-proxy \
   -v /var/run/docker.sock:/var/run/docker.sock:ro \

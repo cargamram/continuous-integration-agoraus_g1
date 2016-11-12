@@ -21,7 +21,7 @@ if [ -n "$ContainerId1" ]
 then
 	echo "Stopping and removing existing $ENV_NAME-$BRANCH-mysql container"
 	docker stop $ContainerId1
-	docker rm $ContainerId1
+	docker rm -v $ContainerId1
 fi
 
 ContainerId2=`docker ps -qa --filter "name=$ENV_NAME-$BRANCH-tomcat"`
@@ -29,7 +29,7 @@ if [ -n "$ContainerId2" ]
 then
 	echo "Stopping and removing existing $ENV_NAME-$BRANCH-tomcat container"
 	docker stop $ContainerId2
-	docker rm $ContainerId2
+	docker rm -v $ContainerId2
 fi
 
 
@@ -78,10 +78,13 @@ docker run -d --name $ENV_NAME-$BRANCH-tomcat \
     --link $ENV_NAME-$BRANCH-mysql:$MYSQL_PROJECT_ROUTE \
     -v "$PATH_ROOT_HOST/deploys/$ENV_NAME/$BRANCH/webapps/":/usr/local/tomcat/webapps \
     -v "$CONF_TOMCAT_SERVER":/usr/local/tomcat/conf/server.xml \
-    -e "LETSENCRYPT_HOST=$URL_VIRTUAL_HOST" \
-    -e "LETSENCRYPT_EMAIL=annonymous@alum.us.es" \
     --restart=always \
     -e VIRTUAL_HOST="$URL_VIRTUAL_HOST" \
-    -e VIRTUAL_PROTO=https \
     -e VIRTUAL_PORT=8080 \
     tomcat:7
+
+#    -e "LETSENCRYPT_HOST=$URL_VIRTUAL_HOST" \
+#    -e "LETSENCRYPT_EMAIL=annonymous@alum.us.es" \
+#    -e VIRTUAL_PROTO=https \
+
+echo "Aplicación desplegada en http://$URL_VIRTUAL_HOST"
