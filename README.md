@@ -1,10 +1,11 @@
 # Agora@US Continuous Delivery Integration
 
-Repo de integración continua para AgoraUS-G1 (mañana) en el curso 2016-17.
+Repo de integración continua para AgoraUS-G1 (mañana) en el curso 2016-17. Más info: https://1984.lsi.us.es/wiki-egc/index.php/Servidor_16/17
 
 # Idea general
 
 La idea es tener un sistema de despliegue e integración continua durante el desarrollo de los proyectos con el fin de facilitar tanto el desarrollo como la integración de los subsistemas. Para ello se ha pensado que dicha integración constará de 3 partes:
+
 1. Fase make. En esta fase se descarga el código tras una modificación y se prepara para ser lanzado. En ocasiones podrían ejecutarse test para comprobar su integridad antes del despliegue.
 2. Fase beta. Esta fase se ejecuta automáticamente tras la finalización de la fase make. En esta fase se elimina la aplicación ya desplegada y se despliega la compilada en la fase make.
 3. Fase stable. Esta fase se ejecuta manualmente. Es igual que la fase beta a diferencia que se busca que sea estable para que sean las que usen los otros subsistemas como referencia. El código ejecutado en esta fase debe ser el mismo que el de la fase beta para corrobar su estabilidad antes de ejecutar este despliegue.
@@ -63,6 +64,7 @@ ExecStart=/usr/bin/dockerd --tls=false -H tcp://192.168.20.84:4243 -H unix:///va
 ```
 Posteriormente ejecutar `sudo systemctl daemon-reload` y `sudo systemctl restart docker` con el fin de que cargue la configuración.
 Está configuración no es totalmente segura puesto que no requiere autenticación pero al limitarlo solo al equipo local el riesgo se minimiza aunque no se disipa.
+
 (Fuente: https://docs.docker.com/engine/admin/#centos--red-hat-enterprise-linux--fedora)
 
 
@@ -74,9 +76,10 @@ Está configuración no es totalmente segura puesto que no requiere autenticaci�
 # Problemas posibles/encontrados
 ## No se generán los certificados automáticamente o los contenedores no pueden hacer peticiones a cualquier subdominio en la misma máquina
 El contenedor da problemas puesto que la máquina no es capaz de resolver su propio nombre. Es necesario ya que antes de renovar el certificado comprueba que el dominio este en pie. La solución fue decirle que sus direcciones las resuelva como localhost.
+
 (fuente: https://support.rackspace.com/how-to/centos-hostname-change/)
 
-# Fuentes e inspiraciones
+# Inspiración y fuentes
 - https://blog.philipphauer.de/tutorial-continuous-delivery-with-docker-jenkins/
 - https://www.wouterdanes.net/2014/04/11/continuous-integration-using-docker-maven-and-jenkins.html
 - http://christoph-burmeister.eu?p=2989
