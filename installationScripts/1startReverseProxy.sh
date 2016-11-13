@@ -12,5 +12,4 @@ docker run -d -p 80:80 -p 443:443 \
   
   
 echo "Docker nginx-proxy (reverse-proxy)"
-echo "Use it with http://localhost or https://localhost" 
 echo "The docker use the certs in $CERTS_PATH"
