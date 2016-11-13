@@ -8,6 +8,8 @@ BRANCH="stable"
 PATH_ROOT="/var/jenkins_home"
 PATH_ROOT_HOST="/home/egcuser/jenkins_home"
 
+CONF_TOMCAT_SERVER="$PATH_ROOT_HOST/continuous-delivery-playground/AgoraUS/G1-Deliberations/stable-conf/tomcat7/server.xml"
+
 MYSQL_PROJECT_ROUTE="localhost"
 MYSQL_ROOT_PASSWORD="$(date +%s | sha256sum | base64 | head -c 32)"
 
@@ -19,7 +21,7 @@ if [ -n "$ContainerId1" ]
 then
 	echo "Stopping and removing existing $ENV_NAME-$BRANCH-mysql container"
 	docker stop $ContainerId1
-	docker rm $ContainerId1
+	docker rm -v $ContainerId1
 fi
 
 ContainerId2=`docker ps -qa --filter "name=$ENV_NAME-$BRANCH-tomcat"`
@@ -27,7 +29,7 @@ if [ -n "$ContainerId2" ]
 then
 	echo "Stopping and removing existing $ENV_NAME-$BRANCH-tomcat container"
 	docker stop $ContainerId2
-	docker rm $ContainerId2
+	docker rm -v $ContainerId2
 fi
 
 
@@ -64,13 +66,23 @@ docker exec -it $ENV_NAME-$BRANCH-mysql \
 
 echo "$ENV_NAME-mysql populado !"
 
+sleep 20
+
+docker restart $ENV_NAME-$BRANCH-mysql
+
+sleep 5
+
 docker run -d --name $ENV_NAME-$BRANCH-tomcat \
     --link $ENV_NAME-$BRANCH-mysql:$MYSQL_PROJECT_ROUTE \
     -v "$PATH_ROOT_HOST/deploys/$ENV_NAME/$BRANCH/webapps/":/usr/local/tomcat/webapps \
-    -e "LETSENCRYPT_HOST=$URL_VIRTUAL_HOST" \
-    -e "LETSENCRYPT_EMAIL=annonymous@alum.us.es" \
+    -v "$CONF_TOMCAT_SERVER":/usr/local/tomcat/conf/server.xml \
     --restart=always \
     -e VIRTUAL_HOST="$URL_VIRTUAL_HOST" \
-    -e VIRTUAL_PROTO=https \
     -e VIRTUAL_PORT=8080 \
     tomcat:7
+
+#    -e "LETSENCRYPT_HOST=$URL_VIRTUAL_HOST" \
+#    -e "LETSENCRYPT_EMAIL=annonymous@alum.us.es" \
+#    -e VIRTUAL_PROTO=https \
+
+echo "Aplicación desplegada en http://$URL_VIRTUAL_HOST"
