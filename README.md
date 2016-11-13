@@ -1,6 +1,6 @@
 # Agora@US Continuous Delivery Integration
 
-Repo de integración continua para AgoraUS-G1 (mañana) en el curso 2016-17. Más info: https://1984.lsi.us.es/wiki-egc/index.php/Servidor_16/17
+Repositorio de integración continua para AgoraUS-G1 (mañana) en el curso 2016-17. Más información en https://1984.lsi.us.es/wiki-egc/index.php/Servidor_16/17
 
 # Idea general
 
@@ -8,22 +8,22 @@ La idea es tener un sistema de despliegue e integración continua durante el des
 
 1. Fase make. En esta fase se descarga el código tras una modificación y se prepara para ser lanzado. En ocasiones podrían ejecutarse test para comprobar su integridad antes del despliegue.
 2. Fase beta. Esta fase se ejecuta automáticamente tras la finalización de la fase make. En esta fase se elimina la aplicación ya desplegada y se despliega la compilada en la fase make.
-3. Fase stable. Esta fase se ejecuta manualmente. Es igual que la fase beta a diferencia que se busca que sea estable para que sean las que usen los otros subsistemas como referencia. El código ejecutado en esta fase debe ser el mismo que el de la fase beta para corrobar su estabilidad antes de ejecutar este despliegue.
+3. Fase stable. Esta fase se ejecuta manualmente. Se diferencia de la fase beta en la estabilidad, algo necesario para la interacción por parte de los otros subsistemas con él. El código ejecutado en esta fase debe ser el mismo que el de la fase beta para corroborar su estabilidad antes de ejecutar este despliegue.
 
 
 
 # Añadir un proyecto
-Cada proyecto tiene sus propios requisitos por lo que se intenta ser lo más flexible.
+Cada proyecto tiene sus propios requisitos por lo que se intenta ser lo más flexible posible.
 ## Fase make
 En esta fase se busca descargar el proyecto, ejecutar los test (si es posible) y ejecutar todas las acciones oportunas justo antes de desplegar el proyecto.
 
-Primeramente debemos decir donde se realizará dicha fase. Para ello Administrar Jenkins > Configurar el sistema > Nube > Docker y añadimos un docker template. Debe ser una imagen de jenkins slave con los programas necesarios para ejecutar esta fase (siempre debe estar git y ssh) la cual se especificará en el campo Docker Image. Si por ejemplo se va a ejecutar un proyecto maven es recomendable usar siempre la misma carpeta del repositorio maven para evitar descargarlo todo constantemente (Volumes > `/home/egcuser/carpetaCompartidaMavenM2/:/home/jenkins/.m2/`). También es recomendable eliminar tras cada ejecución el volumen de datos generado automáticamente (marcar casilla Remove volumes). Puesto que la conexión al esclavo se realiza por ssh es necesario añadir credenciales con el nombre de usaurio y contraseña de conexión. También es necesario configurar una etiqueta en el campo Labels a la que se hará referencia en la configuración del proyecto.
+Primeramente debemos decir donde se realizará dicha fase. Para ello Administrar Jenkins > Configurar el sistema > Nube > Docker y añadimos un docker template. Debe ser una imagen de jenkins slave con los programas necesarios para ejecutar esta fase (siempre debe estar git y ssh) la cual se especificará en el campo Docker Image. Si por ejemplo se va a ejecutar un proyecto maven es recomendable usar siempre la misma carpeta del repositorio maven para evitar descargarlo todo constantemente (Volumes > `/home/egcuser/carpetaCompartidaMavenM2/:/home/jenkins/.m2/`). Tras cada ejecución se debe eliminar el volumen de datos que se genera automáticamente (marcar casilla Remove volumes). Puesto que la conexión al esclavo se realiza por ssh es necesario añadir credenciales con el nombre de usaurio y contraseña de conexión. Es necesario configurar una etiqueta en el campo Labels a la que se hará referencia en la configuración del proyecto.
 En caso de requerir maven habrá que configurar en jenkins donde se encuentra la ruta remota del mismo. Administrar Jenkins > Global Tool Configuration > Maven > Instalaciones de maven. Poner el nombre (lo ideal es el mismo que se puso al label del jenkins slave) y decir la ruta donde se encuentras del docker.
 
 Una vez configurado el esclavo se añadirá la fase make. Para ello seleccionaremos Nueva Tarea, nombre AgoraUS-Gx-ProjectName_make y seleccionaremos un proyecto maven o de estilo libre. Lo configuraremos de la siguiente forma:
 - Desechar ejecuciones antiguas. Necesario para no ocupar demasiado espacio en la máquina.
 - Restringir donde se puede ejecutar este proyecto. En el campo expresión pondremos en label que le pusimos al esclavo anteriormente.
-- Configurar el orgigen del código fuente > Git. Rellenamos correctamente la URL y la rama deseada.
+- Configurar el origen del código fuente > Git. Rellenamos correctamente la URL y la rama deseada.
 - Disparadores de ejecución > Build when a change is pushed to GitHub.
 - Entorno de ejecución > Add timestamps to the Console Output
 - Pasos previos > Ejecutar línea de comandos (shell).Si es necesario ejecutar algún comando concreto (desplegar un contenedor de mysql por ejemplo) antes de la ejecución de la fase make se deberá depositar el script en la carpeta de este repositorio `AgoraUS/Gx-ProjectName/pre_make.sh`. Para seleccionarlo se debe poner la ruta (`bash $JENKINS_HOME/continuous-delivery-integration/AgoraUS/Gx-ProjectName/beta.sh`) en la configuración del proyecto > General > Prepare an environment for the run > Script File Path.
@@ -42,9 +42,9 @@ Para ello nos iremos al repositorio github del proyecto a desplegar, configuraci
 # Instalación del sistema
 
 Este sistema solo deberá estar instalado donde se vaya a desplegar todo. Es necesario tener instalado Docker y desplegar los siguientes contenedores:
-- [Proxy inverso](https://hub.docker.com/r/jwilder/nginx-proxy/). Ejecutar el script [1startReverseProxy.sh](../blob/master/installationScripts/1startReverseProxy.sh)
-- [Let's Encrypt](https://hub.docker.com/r/jrcs/letsencrypt-nginx-proxy-companion/). Ejecutar el script [2starLetsEncrypt.sh](../blob/master/installationScripts/2starLetsEncrypt.sh)
-- [Jenkins](https://hub.docker.com/r/library/jenkins/). Ejecutar el script [3startJenkins.sh](../blob/master/installationScripts/3startJenkins.sh)
+- [Proxy inverso](https://hub.docker.com/r/jwilder/nginx-proxy/). Ejecutar el script [1startReverseProxy.sh](installationScripts/1startReverseProxy.sh)
+- [Let's Encrypt](https://hub.docker.com/r/jrcs/letsencrypt-nginx-proxy-companion/). Ejecutar el script [2starLetsEncrypt.sh](installationScripts/2starLetsEncrypt.sh)
+- [Jenkins](https://hub.docker.com/r/library/jenkins/). Ejecutar el script [3startJenkins.sh](installationScripts/3startJenkins.sh)
 
 
 ## Configuración jenkins
@@ -69,13 +69,13 @@ Está configuración no es totalmente segura puesto que no requiere autenticaci�
 
 
 # Organización del proyecto
-- [installationScripts](../blob/master/installationScripts). En esta carpeta se encuentran todos los scripts de instalación de este sistema.
-- [Dockers](../blob/master/Dockers). En esta carpeta se encuentran todos los contenedores necesarios para el desarrollo del despliegue continuo siempre y cuando los necesarios no estén subidos en sus repositorios originales.
-- [AgoraUS](../blob/master/AgoraUS). En esta carpeta se almacenan todas las configuraciones necesarias para ejecutar las 3 fases del despliegue de cada proyecto.
+- [installationScripts](installationScripts). En esta carpeta se encuentran todos los scripts de instalación de este sistema.
+- [Dockers](Dockers). En esta carpeta se encuentran todos los contenedores necesarios para el desarrollo del despliegue continuo siempre y cuando los necesarios no estén subidos en sus repositorios originales.
+- [AgoraUS](AgoraUS). En esta carpeta se almacenan todas las configuraciones necesarias para ejecutar las 3 fases del despliegue de cada proyecto.
 
 # Problemas posibles/encontrados
-## No se generán los certificados automáticamente o los contenedores no pueden hacer peticiones a cualquier subdominio en la misma máquina
-El contenedor da problemas puesto que la máquina no es capaz de resolver su propio nombre. Es necesario ya que antes de renovar el certificado comprueba que el dominio este en pie. La solución fue decirle que sus direcciones las resuelva como localhost.
+## No se generan los certificados automáticamente o los contenedores no pueden hacer peticiones a cualquier subdominio en la misma máquina
+El contenedor da problemas puesto que la máquina no es capaz de resolver su propio nombre. Es necesario ya que antes de renovar el certificado comprueba que el dominio esté en pie. La solución fue decirle que sus direcciones las resuelva como localhost.
 
 (fuente: https://support.rackspace.com/how-to/centos-hostname-change/)
 
@@ -84,3 +84,4 @@ El contenedor da problemas puesto que la máquina no es capaz de resolver su pro
 - https://www.wouterdanes.net/2014/04/11/continuous-integration-using-docker-maven-and-jenkins.html
 - http://christoph-burmeister.eu?p=2989
 - http://webapp.org.ua/sysadmin/setting-up-nginx-ssl-reverse-proxy-for-tomcat/
+ 
