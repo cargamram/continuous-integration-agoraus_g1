@@ -36,9 +36,11 @@ docker run -d --name $ENV_NAME-$BRANCH-python \
     	--restart=always \
 	-e VIRTUAL_HOST="$URL_VIRTUAL_HOST" \
 	-e VIRTUAL_PORT=8000 \
+	-e "LETSENCRYPT_HOST=$URL_VIRTUAL_HOST" \
+	-e "LETSENCRYPT_EMAIL=annonymous@alum.us.es" \
 	--expose=8000 \
 	python:2 \
 	bash -c "pip install -r requirements.txt && python manage.py syncdb && python manage.py runserver 0.0.0.0:8000"
 
 
-echo "Aplicación desplegada en http://$URL_VIRTUAL_HOST"
+echo "Aplicación desplegada en https://$URL_VIRTUAL_HOST"
