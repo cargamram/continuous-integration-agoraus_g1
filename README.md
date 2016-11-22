@@ -1,6 +1,13 @@
-# Agora@US Continuous Delivery Integration
+# Agora@US Continuous Integration
 
 Repositorio de integración continua para AgoraUS-G1 (mañana) en el curso 2016-17. Más información en https://1984.lsi.us.es/wiki-egc/index.php/Servidor_16/17
+
+# Proyectos Integrados
+
+Proyecto | Beta | Stable
+------------ | ------------- | -------------
+[Deliberations](https://github.com/AgoraUS-G1-1617/Deliberations) | [beta.deliberaciones...](https://beta.deliberaciones.agoraus1.egc.duckdns.org) | [deliberaciones...](https://deliberaciones.agoraus1.egc.duckdns.org)
+[Cabina-de-votaciones](https://github.com/AgoraUS-G1-1617/Cabina-de-votaciones) | [beta.cvotacion...](https://beta.cvotacion.agoraus1.egc.duckdns.org) | [cvotacion...](https://cvotacion.agoraus1.egc.duckdns.org)
 
 # Idea general
 
