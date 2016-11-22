@@ -79,10 +79,12 @@ docker run -d --name $ENV_NAME-$BRANCH-tomcat \
     --restart=always \
     -e VIRTUAL_HOST="$URL_VIRTUAL_HOST" \
     -e VIRTUAL_PORT=8080 \
+    -e "LETSENCRYPT_HOST=$URL_VIRTUAL_HOST" \
+    -e "LETSENCRYPT_EMAIL=annonymous@alum.us.es" \
     tomcat:7
 
 #    -e "LETSENCRYPT_HOST=$URL_VIRTUAL_HOST" \
 #    -e "LETSENCRYPT_EMAIL=annonymous@alum.us.es" \
 #    -e VIRTUAL_PROTO=https \
 
-echo "Aplicación desplegada en http://$URL_VIRTUAL_HOST"
+echo "Aplicación desplegada en https://$URL_VIRTUAL_HOST"
