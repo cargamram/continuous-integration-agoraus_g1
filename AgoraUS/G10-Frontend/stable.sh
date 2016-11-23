@@ -39,7 +39,6 @@ docker run -d --name $ENV_NAME-$BRANCH-nodejs \
 	-e "LETSENCRYPT_HOST=$URL_VIRTUAL_HOST" \
 	-e "LETSENCRYPT_EMAIL=annonymous@alum.us.es" \
 	--expose=8080 \
-	readytalk/nodejs \
-	bash -c "npm install && node server"
+	anapsix/nodejs
 
 echo "Aplicación desplegada en https://$URL_VIRTUAL_HOST"
