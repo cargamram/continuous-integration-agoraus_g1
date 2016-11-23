@@ -1,6 +1,6 @@
 #!/bin/bash
 
-ENV_NAME="AgoraUS-G1-CabinaVotacion"
+ENV_NAME="AgoraUS-G2-CabinaVotacion"
 URL_VIRTUAL_HOST="cvotacion.agoraus1.egc.duckdns.org"
 BRANCH="stable"
 

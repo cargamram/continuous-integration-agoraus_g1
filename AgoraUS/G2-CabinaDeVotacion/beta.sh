@@ -1,9 +1,9 @@
 #!/bin/bash
 
-ENV_NAME="AgoraUS-G1-CabinaVotacion"
+ENV_NAME="AgoraUS-G2-CabinaVotacion"
 URL_VIRTUAL_HOST="beta.cvotacion.agoraus1.egc.duckdns.org"
 BRANCH="beta"
-PROJECT_JENKINS_NAME="AgoraUS-G1-CabinaVotacion_make"
+PROJECT_JENKINS_NAME="AgoraUS-G2-CabinaVotacion_make"
 
 PATH_ROOT="/var/jenkins_home"
 PATH_ROOT_HOST="/home/egcuser/jenkins_home"
