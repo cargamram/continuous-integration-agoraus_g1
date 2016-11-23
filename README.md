@@ -8,6 +8,12 @@ Proyecto | Beta | Stable
 ------------ | ------------- | -------------
 [Deliberations](https://github.com/AgoraUS-G1-1617/Deliberations) | [beta.deliberaciones...](https://beta.deliberaciones.agoraus1.egc.duckdns.org) | [deliberaciones...](https://deliberaciones.agoraus1.egc.duckdns.org)
 [Cabina-de-votaciones](https://github.com/AgoraUS-G1-1617/Cabina-de-votaciones) | [beta.cvotacion...](https://beta.cvotacion.agoraus1.egc.duckdns.org) | [cvotacion...](https://cvotacion.agoraus1.egc.duckdns.org)
+[CabinaTelegram](https://github.com/AgoraUS-G1-1617/CabinaTelegram) | [@CabinaEGCDevBot](https://telegram.me/CabinaEGCDevBot) | [@CabinaEGCBot](https://telegram.me/CabinaEGCBot)
+
+
+# ¿Como integro mi proyecto?
+
+[Aquí](documentation/presentation.pdf) puedes encontrar la presentación explicativa sobre como realizar la integración para nuevos proyectos. Si aun así no tienes claro como realizarlo siempre puedes empezar instalando Docker y consiguiendo lanzar tu aplicación dentro de él. Una vez hecho esto el resto del camino es sencillo. Animo ! ! !
 
 # Idea general
 
