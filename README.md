@@ -11,6 +11,10 @@ Proyecto | Beta | Stable
 [CabinaTelegram](https://github.com/AgoraUS-G1-1617/CabinaTelegram) | [@CabinaEGCDevBot](https://telegram.me/CabinaEGCDevBot) | [@CabinaEGCBot](https://telegram.me/CabinaEGCBot)
 
 
+# ¿Como integro mi proyecto?
+
+[Aquí](documentation/presentation.pdf) puedes encontrar la presentación explicativa sobre como realizar la integración para nuevos proyectos. Si aun así no tienes claro como realizarlo siempre puedes empezar instalando Docker y consiguiendo lanzar tu aplicación dentro de él. Una vez hecho esto el resto del camino es sencillo. Animo ! ! !
+
 # Idea general
 
 La idea es tener un sistema de despliegue e integración continua durante el desarrollo de los proyectos con el fin de facilitar tanto el desarrollo como la integración de los subsistemas. Para ello se ha pensado que dicha integración constará de 3 partes:
