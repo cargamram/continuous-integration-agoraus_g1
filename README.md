@@ -63,7 +63,7 @@ Este sistema solo deberá estar instalado donde se vaya a desplegar todo. Es nec
 
 ## Configuración jenkins
 
-Es necesario instalar el plugin [Deploy to container Plugin](https://wiki.jenkins-ci.org/display/JENKINS/Deploy+Plugin) ([GitHub](https://github.com/jenkinsci/docker-plugin)). Para configurarlo iremos a Administrar Jenkins > Configurar el sistema > Añadir una nueva nube (abajo) > Docker y usaremos las siguientes opciones:
+Es necesario instalar el plugin [Deploy plugin](https://wiki.jenkins-ci.org/display/JENKINS/Docker+Plugin) ([GitHub](https://github.com/jenkinsci/docker-plugin)). Para configurarlo iremos a Administrar Jenkins > Configurar el sistema > Añadir una nueva nube (abajo) > Docker y usaremos las siguientes opciones:
 - Docker Name: docker_on_localhost
 - Docker URL: tcp://192.168.20.84:4243
 - Probamos la configuración en el botón "test configuration" y anotamos correctamente el "Docker API Version"
