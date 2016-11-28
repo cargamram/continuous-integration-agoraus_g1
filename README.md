@@ -11,6 +11,7 @@ Proyecto | Beta | Stable
 [CabinaTelegram](https://github.com/AgoraUS-G1-1617/CabinaTelegram) | [@CabinaEGCDevBot](https://telegram.me/CabinaEGCDevBot) | [@CabinaEGCBot](https://telegram.me/CabinaEGCBot)
 [Frontend](https://github.com/AgoraUS-G1-1617/Frontend) | [beta.frontend...](https://beta.frontend.agoraus1.egc.duckdns.org/) | [frontend...](https://frontend.agoraus1.egc.duckdns.org/)
 [Creacion-Admin-Votaciones](https://github.com/AgoraUS-G1-1617/Creacion-admin-de-votaciones) | [beta.cavotacion...](https://beta.cavotacion.agoraus1.egc.duckdns.org/) | [cavotacion...](https://cavotacion.agoraus1.egc.duckdns.org/)
+[Censos](https://github.com/AgoraUS-G1-1617/CensoEGC) | [beta.censos...](https://beta.censos.agoraus1.egc.duckdns.org/) | [censos...](https://censos.agoraus1.egc.duckdns.org)
 
 
 # ¿Como integro mi proyecto?
@@ -64,7 +65,7 @@ Este sistema solo deberá estar instalado donde se vaya a desplegar todo. Es nec
 
 ## Configuración jenkins
 
-Es necesario instalar el plugin [Deploy to container Plugin](https://wiki.jenkins-ci.org/display/JENKINS/Deploy+Plugin) ([GitHub](https://github.com/jenkinsci/docker-plugin)). Para configurarlo iremos a Administrar Jenkins > Configurar el sistema > Añadir una nueva nube (abajo) > Docker y usaremos las siguientes opciones:
+Es necesario instalar el plugin [Deploy plugin](https://wiki.jenkins-ci.org/display/JENKINS/Docker+Plugin) ([GitHub](https://github.com/jenkinsci/docker-plugin)). Para configurarlo iremos a Administrar Jenkins > Configurar el sistema > Añadir una nueva nube (abajo) > Docker y usaremos las siguientes opciones:
 - Docker Name: docker_on_localhost
 - Docker URL: tcp://192.168.20.84:4243
 - Probamos la configuración en el botón "test configuration" y anotamos correctamente el "Docker API Version"
