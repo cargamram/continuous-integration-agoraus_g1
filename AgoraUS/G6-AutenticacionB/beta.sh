@@ -38,8 +38,8 @@ mkdir -p "$PATH_ROOT/deploys/$ENV_NAME/$BRANCH/"
 
 # PROYECT FOLDER
 cp -r $PATH_ROOT/builds/$PROJECT_JENKINS_NAME/* $PATH_ROOT/deploys/$ENV_NAME/$BRANCH/
-mv $PATH_ROOT/deploys/$ENV_NAME/$BRANCH/*.sql $PATH_ROOT/deploys/$ENV_NAME/$BRANCH/populate.sql
-cp -f "$PATH_ROOT/continuous-delivery-playground/AgoraUS/G6-AutenticacionB/beta-conf/variables.php" $PATH_ROOT/deploys/$ENV_NAME/$BRANCH/variables.php
+mv $PATH_ROOT/deploys/$ENV_NAME/$BRANCH/auth/auth_DB_script.sql $PATH_ROOT/deploys/$ENV_NAME/$BRANCH/populate.sql
+cp -f "$PATH_ROOT/continuous-delivery-playground/AgoraUS/G6-AutenticacionB/beta-conf/variables.php" $PATH_ROOT/deploys/$ENV_NAME/$BRANCH/auth/variables.php
 
 
 echo "Desplegando contenedores para $ENV_NAME"
@@ -70,7 +70,7 @@ sleep 5
 
 docker run -d --name $ENV_NAME-$BRANCH-php \
 	--link $ENV_NAME-$BRANCH-mysql:$MYSQL_PROJECT_ROUTE \
-	-v "$PATH_ROOT_HOST/deploys/$ENV_NAME/$BRANCH/":/home/auth/ \
+	-v "$PATH_ROOT_HOST/deploys/$ENV_NAME/$BRANCH/auth/":/home/auth/ \
 	-e WEB_DOCUMENT_ROOT=/home/auth \
 	--restart=always \
 	-e VIRTUAL_HOST="$URL_VIRTUAL_HOST" \
