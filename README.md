@@ -10,6 +10,7 @@ Proyecto | Beta | Stable
 [Cabina-de-votaciones](https://github.com/AgoraUS-G1-1617/Cabina-de-votaciones) | [beta.cvotacion...](https://beta.cvotacion.agoraus1.egc.duckdns.org) | [cvotacion...](https://cvotacion.agoraus1.egc.duckdns.org)
 [CabinaTelegram](https://github.com/AgoraUS-G1-1617/CabinaTelegram) | [@CabinaEGCDevBot](https://telegram.me/CabinaEGCDevBot) | [@CabinaEGCBot](https://telegram.me/CabinaEGCBot)
 [Frontend](https://github.com/AgoraUS-G1-1617/Frontend) | [beta.frontend...](https://beta.frontend.agoraus1.egc.duckdns.org/) | [frontend...](https://frontend.agoraus1.egc.duckdns.org/)
+[Censos](https://github.com/AgoraUS-G1-1617/CensoEGC) | [beta.censos...](https://beta.censos.agoraus1.egc.duckdns.org/) | [stable.censos...](https://stable.censos.agoraus1.egc.duckdns.org)
 
 
 # ¿Como integro mi proyecto?
