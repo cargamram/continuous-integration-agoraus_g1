@@ -64,7 +64,7 @@ echo "$ENV_NAME-mysql creado !"
 sleep 20
 
 docker exec $ENV_NAME-$BRANCH-mysql \
-    bash -c "exec mysql -uroot -proot < /home/user/folder/scrip2.sql"
+    bash -c "exec mysql -uroot -proot < /home/user/populate.sql"
 
 echo "$ENV_NAME-mysql populado !"
 
