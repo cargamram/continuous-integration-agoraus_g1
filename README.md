@@ -12,6 +12,7 @@ Proyecto | Beta | Stable
 [Frontend](https://github.com/AgoraUS-G1-1617/Frontend) | [beta.frontend...](https://beta.frontend.agoraus1.egc.duckdns.org/) | [frontend...](https://frontend.agoraus1.egc.duckdns.org/)
 [Creacion-Admin-Votaciones](https://github.com/AgoraUS-G1-1617/Creacion-admin-de-votaciones) | [beta.cavotacion...](https://beta.cavotacion.agoraus1.egc.duckdns.org/) | [cavotacion...](https://cavotacion.agoraus1.egc.duckdns.org/)
 [Censos](https://github.com/AgoraUS-G1-1617/CensoEGC) | [beta.censos...](https://beta.censos.agoraus1.egc.duckdns.org/) | [censos...](https://censos.agoraus1.egc.duckdns.org)
+[Autenticación_b](https://github.com/AgoraUS-G1-1617/Autenticacion_b) | [beta.authb...](https://beta.authb.agoraus1.egc.duckdns.org/) | [auth...](https://authb.agoraus1.egc.duckdns.org)
 
 
 # ¿Como integro mi proyecto?
