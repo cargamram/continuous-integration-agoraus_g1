@@ -38,8 +38,6 @@ mkdir -p "$PATH_ROOT/deploys/$ENV_NAME/$BRANCH/"
 
 # PROYECT FOLDER
 cp -r $PATH_ROOT/builds/$PROJECT_JENKINS_NAME/* $PATH_ROOT/deploys/$ENV_NAME/$BRANCH/
-mv $PATH_ROOT/deploys/$ENV_NAME/$BRANCH/auth/auth_DB_script.sql $PATH_ROOT/deploys/$ENV_NAME/$BRANCH/populate.sql
-cp -f "$PATH_ROOT/continuous-delivery-playground/AgoraUS/G6-AutenticacionB/beta-conf/variables.php" $PATH_ROOT/deploys/$ENV_NAME/$BRANCH/auth/variables.php
 
 
 echo "Desplegando contenedores para $ENV_NAME"

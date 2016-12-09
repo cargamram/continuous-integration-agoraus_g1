@@ -38,8 +38,7 @@ mkdir -p "$PATH_ROOT/deploys/$ENV_NAME/$BRANCH/"
 
 # PROYECT FOLDER
 cp -r $PATH_ROOT/builds/$PROJECT_JENKINS_NAME/* $PATH_ROOT/deploys/$ENV_NAME/$BRANCH/
-mv $PATH_ROOT/deploys/$ENV_NAME/$BRANCH/auth/auth_DB_script.sql $PATH_ROOT/deploys/$ENV_NAME/$BRANCH/populate.sql
-
+cp -r $PATH_ROOT/deploys/$ENV_NAME/beta/* $PATH_ROOT/deploys/$ENV_NAME/$BRANCH/
 
 
 echo "Desplegando contenedores para $ENV_NAME"
