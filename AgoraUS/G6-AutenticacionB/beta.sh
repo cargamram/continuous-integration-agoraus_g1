@@ -39,11 +39,13 @@ mkdir -p "$PATH_ROOT/deploys/$ENV_NAME/$BRANCH/"
 # PROYECT FOLDER
 cp -r $PATH_ROOT/builds/$PROJECT_JENKINS_NAME/* $PATH_ROOT/deploys/$ENV_NAME/$BRANCH/
 
+# Variables files
+cp -f $PATH_ROOT/continuous-delivery-playground/AgoraUS/G6-AutenticacionB/beta-conf/variables.php $PATH_ROOT/deploys/$ENV_NAME/$BRANCH/auth/variables.php
 
 echo "Desplegando contenedores para $ENV_NAME"
 
 docker run --name $ENV_NAME-$BRANCH-mysql \
-    -v "$PATH_ROOT_HOST/deploys/$ENV_NAME/$BRANCH/populate.sql":/home/user/populate.sql \
+    -v "$PATH_ROOT_HOST/deploys/$ENV_NAME/$BRANCH/auth/auth_DB_script.sql":/home/user/populate.sql \
     -e MYSQL_ROOT_PASSWORD="$MYSQL_ROOT_PASSWORD" \
     --restart=always \
     -d mysql:5.7 \
