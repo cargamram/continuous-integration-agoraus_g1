@@ -14,6 +14,7 @@ Proyecto | Beta | Stable
 [Censos](https://github.com/AgoraUS-G1-1617/CensoEGC) | [beta.censos...](https://beta.censos.agoraus1.egc.duckdns.org/) | [censos...](https://censos.agoraus1.egc.duckdns.org)
 [Recuento y Modificación](https://github.com/AgoraUS-G1-1617/Recuento-y-modificacion) | [beta.recuento...](https://beta.recuento.agoraus1.egc.duckdns.org/) | [recuento...](https://recuento.agoraus1.egc.duckdns.org)
 [Autenticación_b](https://github.com/AgoraUS-G1-1617/Autenticacion_b) | [beta.authb...](https://beta.authb.agoraus1.egc.duckdns.org/) | [authb...](https://authb.agoraus1.egc.duckdns.org)
+[Autenticación_a](https://github.com/AgoraUS-G1-1617/Autentication) | [beta.autha...](https://beta.autha.agoraus1.egc.duckdns.org/) | [autha...](https://autha.agoraus1.egc.duckdns.org/)
 
 
 
