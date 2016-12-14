@@ -1,7 +1,7 @@
 #!/bin/bash
 
-ENV_NAME="AgoraUS-G6-AutenticacionB"
-URL_VIRTUAL_HOST="authb.agoraus1.egc.duckdns.org"
+ENV_NAME="AgoraUS-G7-AutenticacionA"
+URL_VIRTUAL_HOST="autha.agoraus1.egc.duckdns.org"
 BRANCH="stable"
 
 
@@ -40,7 +40,7 @@ mkdir -p "$PATH_ROOT/deploys/$ENV_NAME/$BRANCH/"
 cp -r $PATH_ROOT/deploys/$ENV_NAME/beta/* $PATH_ROOT/deploys/$ENV_NAME/$BRANCH/
 
 # Variables files
-cp -f $PATH_ROOT/continuous-delivery-playground/AgoraUS/G6-AutenticacionB/stable-conf/variables.php $PATH_ROOT/deploys/$ENV_NAME/$BRANCH/auth/variables.php
+cp -f $PATH_ROOT/continuous-delivery-playground/AgoraUS/G7-AutenticacionA/stable-conf/variables.php $PATH_ROOT/deploys/$ENV_NAME/$BRANCH/auth/variables.php
 
 
 echo "Desplegando contenedores para $ENV_NAME"

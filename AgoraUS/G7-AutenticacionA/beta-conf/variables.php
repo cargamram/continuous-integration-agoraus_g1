@@ -17,7 +17,7 @@
     //define("DB_PASS", "EGC1516");
     
 	
-    define("DB_HOST", "mysql:dbname=egcajtk_egcdb;host=localhost");
+    define("DB_HOST", "mysql:dbname=egcajtk_egcdb;host=exdb");
     define("DB_USER", "egcajtk_egc1617");
     define("DB_PASS", "egc1617aj");
 	$socialNet=TRUE;
