@@ -32,7 +32,8 @@ echo "Desplegando contenedores para $ENV_NAME"
 
 docker run -d --name $ENV_NAME-$BRANCH-python \
 	-v "$PATH_ROOT_HOST/deploys/$ENV_NAME/$BRANCH/":/myapp \
- 	-w /myapp \
+    -v $PATH_ROOT_HOST/continuous-delivery-playground/AgoraUS/hosts:/etc/hosts:ro \
+    -w /myapp \
     	--restart=always \
 	gurken2108/python3-java \
 	bash -c "pip install -r requirements.txt && python3 cabinaTelegram.py"
