@@ -35,7 +35,7 @@ docker run -d --name $ENV_NAME-$BRANCH-python \
     -v "$PATH_ROOT_HOST/deploys/$ENV_NAME/$BRANCH/":/myapp \
     -w /myapp \
     --restart=always \
-    python:3 \
+    gurken2108/python3-java \
     bash -c "pip install -r requirements.txt && python3 cabinaTelegram.py"
 
 
