@@ -32,7 +32,8 @@ echo "Desplegando contenedores para $ENV_NAME"
 
 docker run -d --name $ENV_NAME-$BRANCH-nodejs \
 	-v "$PATH_ROOT_HOST/deploys/$ENV_NAME/$BRANCH/":/myapp \
- 	-w /myapp \
+    -v $PATH_ROOT_HOST/continuous-delivery-playground/AgoraUS/hosts:/etc/hosts:ro \
+	-w /myapp \
     --restart=always \
 	-e VIRTUAL_HOST="$URL_VIRTUAL_HOST" \
 	-e VIRTUAL_PORT=8080 \
