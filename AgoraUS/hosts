@@ -2,3 +2,10 @@
 ::1         localhost localhost.localdomain localhost6 localhost6.localdomain6
 192.168.20.84   egc.duckdns.org egc
 192.168.20.84   beta.recuento.agoraus1.egc.duckdns.org recuento.agoraus1.egc.duckdns.org
+192.168.20.84   beta.deliberaciones.agoraus1.egc.duckdns.org deliberaciones.agoraus1.egc.duckdns.org
+192.168.20.84   beta.cvotacion.agoraus1.egc.duckdns.org cvotacion.agoraus1.egc.duckdns.org
+192.168.20.84   beta.cavotacion.agoraus1.egc.duckdns.org cavotacion.agoraus1.egc.duckdns.org
+192.168.20.84   beta.authb.agoraus1.egc.duckdns.org authb.agoraus1.egc.duckdns.org
+192.168.20.84   beta.autha.agoraus1.egc.duckdns.org autha.agoraus1.egc.duckdns.org
+192.168.20.84   beta.frontend.agoraus1.egc.duckdns.org frontend.agoraus1.egc.duckdns.org
+192.168.20.84   beta.censos.agoraus1.egc.duckdns.org censos.agoraus1.egc.duckdns.org
