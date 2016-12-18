@@ -33,7 +33,7 @@ echo "Desplegando contenedores para $ENV_NAME"
 
 docker run -d --name $ENV_NAME-$BRANCH-python \
     -v "$PATH_ROOT_HOST/deploys/$ENV_NAME/$BRANCH/":/myapp \
-    -v /etc/hosts:/etc/hosts:ro \
+    -v $PATH_ROOT_HOST/continuous-delivery-playground/AgoraUS/hosts:/etc/hosts:ro \
     -w /myapp \
     --restart=always \
     gurken2108/python3-java \
