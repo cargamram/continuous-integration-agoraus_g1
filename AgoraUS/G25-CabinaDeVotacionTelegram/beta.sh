@@ -33,8 +33,9 @@ echo "Desplegando contenedores para $ENV_NAME"
 
 docker run -d --name $ENV_NAME-$BRANCH-python \
     -v "$PATH_ROOT_HOST/deploys/$ENV_NAME/$BRANCH/":/myapp \
-    -v $PATH_ROOT_HOST/continuous-delivery-playground/AgoraUS/hosts:/etc/hosts:ro \
     -w /myapp \
+    --add-host recuento.agoraus1.egc.duckdns.org:192.168.20.84 \
+    --add-host beta.recuento.agoraus1.egc.duckdns.org:192.168.20.84 \
     --restart=always \
     gurken2108/python3-java \
     bash -c "pip install -r requirements.txt && python3 cabinaTelegram.py"
