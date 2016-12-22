@@ -32,8 +32,9 @@ echo "Desplegando contenedores para $ENV_NAME"
 
 docker run -d --name $ENV_NAME-$BRANCH-nodejs \
 	-v "$PATH_ROOT_HOST/deploys/$ENV_NAME/$BRANCH/":/myapp \
-    -v $PATH_ROOT_HOST/continuous-delivery-playground/AgoraUS/hosts:/etc/hosts:ro \
-	-w /myapp \
+    -w /myapp \
+    --add-host recuento.agoraus1.egc.duckdns.org:192.168.20.84 \
+    --add-host beta.recuento.agoraus1.egc.duckdns.org:192.168.20.84 \
     --restart=always \
 	-e VIRTUAL_HOST="$URL_VIRTUAL_HOST" \
 	-e VIRTUAL_PORT=8080 \
