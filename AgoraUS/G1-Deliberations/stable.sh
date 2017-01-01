@@ -90,8 +90,6 @@ docker run -d --name $ENV_NAME-$BRANCH-tomcat \
     -e "LETSENCRYPT_EMAIL=annonymous@alum.us.es" \
     tomcat:7
 
-sleep 5
-
 docker exec $ENV_NAME-$BRANCH-tomcat \
     bash -c "echo "Europe/Madrid" > /etc/timezone && dpkg-reconfigure -f noninteractive tzdata"
 
