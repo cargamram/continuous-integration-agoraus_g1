@@ -68,6 +68,9 @@ echo "$ENV_NAME-mysql populado !"
 
 sleep 20
 
+docker exec $ENV_NAME-$BRANCH-mysql \
+    bash -c "echo "Europe/Madrid" > /etc/timezone && dpkg-reconfigure -f noninteractive tzdata"
+
 docker restart $ENV_NAME-$BRANCH-mysql
 
 sleep 5
@@ -86,5 +89,8 @@ docker run -d --name $ENV_NAME-$BRANCH-tomcat \
 #    -e "LETSENCRYPT_HOST=$URL_VIRTUAL_HOST" \
 #    -e "LETSENCRYPT_EMAIL=annonymous@alum.us.es" \
 #    -e VIRTUAL_PROTO=https \
+
+docker exec $ENV_NAME-$BRANCH-tomcat \
+   bash -c "echo "Europe/Madrid" > /etc/timezone && dpkg-reconfigure -f noninteractive tzdata"
 
 echo "Aplicación desplegada en https://$URL_VIRTUAL_HOST"
