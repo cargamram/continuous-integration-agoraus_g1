@@ -53,10 +53,6 @@ echo "Desplegando contenedores para $ENV_NAME"
 docker run --name $ENV_NAME-$BRANCH-mysql \
     -v "$PATH_ROOT_HOST/deploys/$ENV_NAME/$BRANCH/populate.sql":/home/user/populate.sql \
     -e MYSQL_ROOT_PASSWORD="$MYSQL_ROOT_PASSWORD" \
-     --add-host beta.autha.agoraus1.egc.duckdns.org:192.168.20.84 \
-     --add-host autha.agoraus1.egc.duckdns.org:192.168.20.84 \
-     --add-host beta.authb.agoraus1.egc.duckdns.org:192.168.20.84 \
-     --add-host authb.agoraus1.egc.duckdns.org:192.168.20.84 \
     --restart=always \
     -d mysql:5.7 \
     --bind-address=0.0.0.0
@@ -85,6 +81,10 @@ docker run -d --name $ENV_NAME-$BRANCH-tomcat \
     --link $ENV_NAME-$BRANCH-mysql:$MYSQL_PROJECT_ROUTE \
     -v "$PATH_ROOT_HOST/deploys/$ENV_NAME/$BRANCH/webapps/":/usr/local/tomcat/webapps \
     -v "$CONF_TOMCAT_SERVER":/usr/local/tomcat/conf/server.xml \
+     --add-host beta.autha.agoraus1.egc.duckdns.org:192.168.20.84 \
+     --add-host autha.agoraus1.egc.duckdns.org:192.168.20.84 \
+     --add-host beta.authb.agoraus1.egc.duckdns.org:192.168.20.84 \
+     --add-host authb.agoraus1.egc.duckdns.org:192.168.20.84 \
     --restart=always \
     -e VIRTUAL_HOST="$URL_VIRTUAL_HOST" \
     -e VIRTUAL_PORT=8080 \
