@@ -26,8 +26,6 @@ mkdir -p "$PATH_ROOT/deploys/$ENV_NAME/$BRANCH/"
 
 # NODEJS FOLDER
 cp -r $PATH_ROOT/deploys/$ENV_NAME/beta/* $PATH_ROOT/deploys/$ENV_NAME/$BRANCH/
-cp $PATH_ROOT/private-config/G18-RecuentoyModificacion/private.key $PATH_ROOT/deploys/$ENV_NAME/$BRANCH/keypair/private.key
-
 
 echo "Desplegando contenedores para $ENV_NAME"
 
