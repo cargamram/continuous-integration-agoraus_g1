@@ -40,7 +40,7 @@ docker run -d --name $ENV_NAME-$BRANCH-nodejs \
 	-e "LETSENCRYPT_HOST=$URL_VIRTUAL_HOST" \
 	-e "LETSENCRYPT_EMAIL=annonymous@alum.us.es" \
 	--expose=80 \
-	dionakra/docker-nodejs-java
+	dionakra/nodejs-java8
 
 docker exec $ENV_NAME-$BRANCH-nodejs apk add tzdata && \
 docker exec $ENV_NAME-$BRANCH-nodejs cp /usr/share/zoneinfo/Europe/Madrid /etc/localtime
