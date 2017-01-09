@@ -42,4 +42,7 @@ docker run -d --name $ENV_NAME-$BRANCH-nodejs \
 	--expose=80 \
 	dionakra/docker-nodejs-java
 
+docker exec $ENV_NAME-$BRANCH-nodejs apk add tzdata && \
+docker exec $ENV_NAME-$BRANCH-nodejs cp /usr/share/zoneinfo/Europe/Madrid /etc/localtime
+
 echo "Aplicación desplegada en https://$URL_VIRTUAL_HOST"
