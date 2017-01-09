@@ -40,7 +40,7 @@ docker run -d --name $ENV_NAME-$BRANCH-nodejs \
 	-e "LETSENCRYPT_HOST=$URL_VIRTUAL_HOST" \
 	-e "LETSENCRYPT_EMAIL=annonymous@alum.us.es" \
 	--expose=80 \
-	anapsix/nodejs
+	dionakra/docker-nodejs-java
 
 
 echo "Aplicación desplegada en https://$URL_VIRTUAL_HOST"

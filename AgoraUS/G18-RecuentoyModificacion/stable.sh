@@ -24,8 +24,9 @@ rm -r "$PATH_ROOT/deploys/$ENV_NAME/$BRANCH/"
 
 mkdir -p "$PATH_ROOT/deploys/$ENV_NAME/$BRANCH/"
 
-# PYTHON FOLDER
+# NODEJS FOLDER
 cp -r $PATH_ROOT/deploys/$ENV_NAME/beta/* $PATH_ROOT/deploys/$ENV_NAME/$BRANCH/
+cp $PATH_ROOT/private-config/G18-RecuentoyModificacion/private.key $PATH_ROOT/deploys/$ENV_NAME/$BRANCH/keypair/private.key
 
 
 echo "Desplegando contenedores para $ENV_NAME"
@@ -39,6 +40,6 @@ docker run -d --name $ENV_NAME-$BRANCH-nodejs \
 	-e "LETSENCRYPT_HOST=$URL_VIRTUAL_HOST" \
 	-e "LETSENCRYPT_EMAIL=annonymous@alum.us.es" \
 	--expose=80 \
-	anapsix/nodejs
+	dionakra/docker-nodejs-java
 
 echo "Aplicación desplegada en https://$URL_VIRTUAL_HOST"
