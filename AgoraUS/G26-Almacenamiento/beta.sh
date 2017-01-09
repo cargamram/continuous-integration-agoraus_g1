@@ -3,7 +3,7 @@
 ENV_NAME="AgoraUS-G26-Almacenamiento"
 URL_VIRTUAL_HOST="beta.almacenamiento.agoraus1.egc.duckdns.org"
 BRANCH="beta"
-PROJECT_JENKINS_NAME="AgoraUS-G20-Almacenamiento_make"
+PROJECT_JENKINS_NAME="AgoraUS-G26-Almacenamiento_make"
 
 PATH_ROOT="/var/jenkins_home"
 PATH_ROOT_HOST="/home/egcuser/jenkins_home"
@@ -40,7 +40,7 @@ mkdir -p "$PATH_ROOT/deploys/$ENV_NAME/$BRANCH/"
 cp -r $PATH_ROOT/builds/$PROJECT_JENKINS_NAME/* $PATH_ROOT/deploys/$ENV_NAME/$BRANCH/
 
 # Variables files
-cp -f $PATH_ROOT/continuous-delivery-playground/AgoraUS/G6-AutenticacionB/beta-conf/variables.php $PATH_ROOT/deploys/$ENV_NAME/$BRANCH/auth/variables.php
+cp -f $PATH_ROOT/continuous-delivery-playground/AgoraUS/G26-Almacenamiento/beta-conf/config.php $PATH_ROOT/deploys/$ENV_NAME/$BRANCH/config.php
 
 echo "Desplegando contenedores para $ENV_NAME"
 

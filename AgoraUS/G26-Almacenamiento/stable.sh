@@ -40,7 +40,7 @@ mkdir -p "$PATH_ROOT/deploys/$ENV_NAME/$BRANCH/"
 cp -r $PATH_ROOT/deploys/$ENV_NAME/beta/* $PATH_ROOT/deploys/$ENV_NAME/$BRANCH/
 
 # Variables files
-cp -f $PATH_ROOT/continuous-delivery-playground/AgoraUS/G6-AutenticacionB/stable-conf/variables.php $PATH_ROOT/deploys/$ENV_NAME/$BRANCH/auth/variables.php
+cp -f $PATH_ROOT/continuous-delivery-playground/AgoraUS/G6-AutenticacionB/stable-conf/config.php $PATH_ROOT/deploys/$ENV_NAME/$BRANCH/config.php
 
 
 echo "Desplegando contenedores para $ENV_NAME"
