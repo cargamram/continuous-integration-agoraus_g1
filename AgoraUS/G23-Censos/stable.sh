@@ -80,6 +80,8 @@ docker run -d --name $ENV_NAME-$BRANCH-tomcat \
     --add-host autha.agoraus1.egc.duckdns.org:192.168.20.84 \
     --add-host beta.authb.agoraus1.egc.duckdns.org:192.168.20.84 \
     --add-host authb.agoraus1.egc.duckdns.org:192.168.20.84 \
+    --add-host recuento.agoraus1.egc.duckdns.org:192.168.20.84 \
+    --add-host beta.recuento.agoraus1.egc.duckdns.org:192.168.20.84 \
     --restart=always \
     -e VIRTUAL_HOST="$URL_VIRTUAL_HOST" \
     -e VIRTUAL_PORT=8080 \
