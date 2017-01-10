@@ -45,7 +45,7 @@ docker run -d --name $ENV_NAME-$BRANCH-python \
 	-e "LETSENCRYPT_HOST=$URL_VIRTUAL_HOST" \
 	-e "LETSENCRYPT_EMAIL=annonymous@alum.us.es" \
 	--expose=8000 \
-	python:2 \
+	korekontrol/ubuntu-java-python2 \
 	bash -c "pip install -r requirements.txt && python manage.py syncdb && python manage.py runserver 0.0.0.0:8000"
 
 
