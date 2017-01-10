@@ -46,7 +46,7 @@ docker run -d --name $ENV_NAME-$BRANCH-python \
 	-e "LETSENCRYPT_EMAIL=annonymous@alum.us.es" \
 	--expose=8000 \
 	korekontrol/ubuntu-java-python2 \
-	bash -c "pip install -r requirements.txt && python manage.py syncdb && python manage.py runserver 0.0.0.0:8000"
+	bash -c "echo 'Europe/Madrid' > /etc/timezone && dpkg-reconfigure -f noninteractive tzdata && pip install -r requirements.txt && python manage.py syncdb && python manage.py runserver 0.0.0.0:8000"
 
 
 echo "Aplicación desplegada en https://$URL_VIRTUAL_HOST"
