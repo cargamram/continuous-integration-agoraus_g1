@@ -1,7 +1,7 @@
 <?php 
 $servername = 'exdb';
-$username = 'root';
-$pass = 'ROOT';
+$username = 'test';
+$pass = 'test';
 $dbname = 'egcdb';
 
 ?>
