@@ -1,5 +1,5 @@
 <?php 
-$servername = 'exdb';
+$servername = 'db';
 $username = 'test';
 $pass = 'test';
 $dbname = 'egcdb';
