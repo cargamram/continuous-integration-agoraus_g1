@@ -48,7 +48,7 @@ docker run -d --name $ENV_NAME-$BRANCH-python \
 	-e "LETSENCRYPT_EMAIL=annonymous@alum.us.es" \
 	--expose=5000 \
     gurken2108/python3-java \
-    bash -c "echo 'Europe/Madrid' > /etc/timezone && dpkg-reconfigure -f noninteractive tzdata && pip install -r requirements.txt && python3 cabinaTelegram.py | python3 auth/app.py"
+    bash -c "echo 'Europe/Madrid' > /etc/timezone && dpkg-reconfigure -f noninteractive tzdata && pip install -r requirements.txt && python3 src/main/python/cabinaTelegram.py | python3 src/main/python/auth/app.py"
 
 
 echo "Aplicación desplegada en https://telegram.me/CabinaEGCDevBot"
